@@ -1,0 +1,19 @@
+.header__logo {
+    max-width: 142px;
+}
+
+/* .header__logo:hover {
+    filter: invert(1);
+} */
+
+@media screen and (max-width: 909px) {
+    .header__logo {
+      padding-left: 27px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .header__logo {
+      max-width: 104px;
+    }
+}

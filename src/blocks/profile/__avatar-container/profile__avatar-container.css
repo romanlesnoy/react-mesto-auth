@@ -1,0 +1,6 @@
+.profile__avatar-container {
+    max-width: 125px;
+    max-height: 125px;
+    position: relative;
+    margin-right: 30px;
+}
