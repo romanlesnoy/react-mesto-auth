@@ -58,10 +58,12 @@ class Register extends React.Component {
                     </button>
                 </form>
                 <div className="register__signin">
-                    <p>Уже зарегистрированы?</p>
-                    <Link to="login" className="register__login-link">
-                        Войти
-                    </Link>
+                    <p>Уже зарегистрированы? &nbsp;
+                        <Link to="login" className="register__login-link">
+                            Войти
+                        </Link>
+                    </p>
+                    
                 </div>
             </div>
         );

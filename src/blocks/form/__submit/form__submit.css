@@ -2,15 +2,15 @@
     width:100%;
     max-width: 358px;
     height: 50px;
-    background: #000;
+    background: #fff;
     border-radius: 2px;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    color: #FFFFFF;
+    color: #000;
     border: none;
-    margin-top: 15px;
+    margin-top: auto;
 }
 
 .form__submit:hover {
