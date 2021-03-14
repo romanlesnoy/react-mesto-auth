@@ -26,7 +26,7 @@ class Register extends React.Component {
     };
     render() {
         return (
-            <div className="register">
+            <section className="register">
                 <form onSubmit={this.handleSubmit} className="form">
                     <h1 className="form__title">Регистрация</h1>
                     <input
@@ -65,7 +65,7 @@ class Register extends React.Component {
                     </p>
                     
                 </div>
-            </div>
+            </section>
         );
     }
 }

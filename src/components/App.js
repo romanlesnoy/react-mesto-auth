@@ -13,6 +13,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import Register from "./Register";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
+import InfoToolTip from "./InfoToolTip";
 
 function App() {
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -208,6 +209,7 @@ function App() {
                     </PopupWithForm>
 
                     <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+                    <InfoToolTip isOpen={true} onClose={closeAllPopups}/>
                 </div>
             </CurrentUserContext.Provider>
         </BrowserRouter>

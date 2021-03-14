@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Login extends React.Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class Login extends React.Component {
     }
     render() {
         return (
-            <div className="login">
+            <section className="login">
                 <form onSubmit={this.handleSubmit} className="form">
                     <h1 className="form__title">Вход</h1>
                     <input
@@ -54,7 +54,7 @@ class Login extends React.Component {
                         Войти
                     </button>
                 </form>
-            </div>
+            </section>
         );
     }
 }
