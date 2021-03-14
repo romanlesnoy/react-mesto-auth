@@ -19,9 +19,10 @@
     transition: .2s, ease-in-out, linear;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 370px) {
     .form__submit  {
-        max-width: 238px;
+        margin-top: 150px;
+        max-width: 260px;
         height: 46px;
     }
 }
