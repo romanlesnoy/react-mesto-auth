@@ -7,7 +7,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-            <main>
+            <main className='main'>
                 <section className="profile">
                     <div className="profile__container">
                         <div className="profile__avatar-container">

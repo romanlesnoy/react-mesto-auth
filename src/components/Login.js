@@ -24,38 +24,36 @@ class Login extends React.Component {
     render() {
         return (
             <div className="login">
-                <p className="login__welcome">Добро пожаловать!</p>
-                <form onSubmit={this.handleSubmit} className="login__form">
-                    <label htmlFor="username">Логин:</label>
+                <form onSubmit={this.handleSubmit} className="form">
+                    <h1 className="form__title">Вход</h1>
                     <input
+                        id="email"
+                        className="form__input"
+                        name="email"
+                        type="email"
+                        placeholder="Email"
                         required
-                        id="username"
-                        name="username"
-                        type="text"
-                        value={this.state.username}
+                        value={this.state.email}
                         onChange={this.handleChange}
                     />
-                    <label htmlFor="password">Пароль:</label>
                     <input
-                        required
                         id="password"
+                        className="form__input"
                         name="password"
                         type="password"
+                        placeholder="Пароль"
+                        required
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
-                    <div className="login__button-container">
-                        <button type="submit" className="login__link">
-                            Войти
-                        </button>
-                    </div>
+                    <button
+                        type="submit"
+                        onSubmit={this.handleSubmit}
+                        className="form__submit"
+                    >
+                        Войти
+                    </button>
                 </form>
-                <div className="login__signup">
-                    <p>Ещё не зарегистрированы?</p>
-                    <Link to="/sing-up" className="signup__link">
-                        Зарегистрироваться
-                    </Link>
-                </div>
             </div>
         );
     }
