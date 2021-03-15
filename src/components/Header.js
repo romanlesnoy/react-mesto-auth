@@ -2,8 +2,7 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 import logo from "../images/logo.svg";
 
-function Header() {
-    const email = "example@example.com"
+function Header({userEmail, onSignOut}) {
     return (
         <header className="header">
             <img
@@ -23,8 +22,8 @@ function Header() {
             </Route>
             <Route exact path="/">
                 <p className="header__email">
-                    {email} &nbsp;
-                    <Link to="sign-in" className="header__login-link">
+                    {userEmail} &nbsp;
+                    <Link to="sign-in" className="header__login-link" onClick={onSignOut}>
                         Выйти
                     </Link>
                 </p>

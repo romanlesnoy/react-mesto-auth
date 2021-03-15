@@ -1,10 +1,11 @@
 import React from "react";
 
-function InfoToolTip({ massage = "что то пошло не так", isOpen, onClose }) {
+function InfoToolTip({ isOpen, onClose, isSuccses }) {
+    console.log(isOpen)
     return (
         <section
             className={`popup popup__infotooltip ${
-                true ? "popup_opened" : " "
+                isOpen ? "popup_opened" : " "
             }`}
         >
             <div className="popup__container">
@@ -14,9 +15,9 @@ function InfoToolTip({ massage = "что то пошло не так", isOpen, o
                     onClick={onClose}
                 ></button>
                 <div
-                    className="popup__info-img popup__info-img_fail"
+                    className={`popup__info-img ${isSuccses ? " " : "popup__info-img_fail"}`}
                 />
-                <p className="popup__text">{massage}</p>
+                <p className="popup__text">{isSuccses ? "Вы успешно зарегистрировались!" : "Что то пошло не так! Попробуйте ещё раз"}</p>
             </div>
         </section>
     );
