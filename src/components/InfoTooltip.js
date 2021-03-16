@@ -1,7 +1,6 @@
 import React from "react";
 
 function InfoToolTip({ isOpen, onClose, isSuccses }) {
-    console.log(isOpen)
     return (
         <section
             className={`popup popup__infotooltip ${

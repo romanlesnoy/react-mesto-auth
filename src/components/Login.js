@@ -5,11 +5,19 @@ const Login = ({ onLogin }) => {
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleEmailInput = (event) => {
+        setEmail(event.target.value);
+    }
 
+    const handlePasswordInput = (event) => {
+        setPassword(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
         onLogin(email, password);
-    };
+    }
+
     return (
         <section className="login">
             <form onSubmit={handleSubmit} className="form">
@@ -22,7 +30,7 @@ const Login = ({ onLogin }) => {
                     placeholder="Email"
                     required
                     value={email}
-                    onChange={(evt) => setEmail(evt.target.value)}
+                    onChange={handleEmailInput}
                 />
                 <input
                     id="password"
@@ -32,7 +40,7 @@ const Login = ({ onLogin }) => {
                     placeholder="Пароль"
                     required
                     value={password}
-                    onChange={(evt) => setPassword(evt.target.value)}
+                    onChange={handlePasswordInput}
                 />
                 <button
                     type="submit"
