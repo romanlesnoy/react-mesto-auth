@@ -28,7 +28,7 @@ function App() {
     const [regSuccsesStatusInfo, setRegSuccsesStatusInfo] = useState(false);//статус информации о регистрации, которая отобразится в попапе 
     const [userEmail, setUserEmail] = useState(" ");//имейл пользователя в хедере
 
-    const [currentUser, setCurrentUser] = useState(" ");//стейт пользователя
+    const [currentUser, setCurrentUser] = useState({});//стейт пользователя
     const [cards, setCards] = useState([]);//массив карточек 
 
     const history = useHistory();
