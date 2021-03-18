@@ -1,18 +1,28 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup ({ isOpen, onClose, onAddPlace }) {
-    const placeNameRef = useRef();
-    const placeLinkRef = useRef();
+function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+    const [name, setName] = useState("");
+    const [link, setLink] = useState("");
 
-    function handleAddPlaceSubmit (event) {
+    useEffect(() => {
+        setName("");
+        setLink("");
+    }, [onClose]);
+
+    function handleNameChange(e) {
+        setName(e.target.value);
+    }
+
+    function handleLinkChange(e) {
+        setLink(e.target.value);
+    }
+
+    function handleAddPlaceSubmit(event) {
         event.preventDefault();
         onAddPlace({
-            name: placeNameRef.current.value,
-            link: placeLinkRef.current.value,
+            name, link
         });
-        placeNameRef.current.value = ' ';
-        placeLinkRef.current.value = ' ';
     }
 
     return (
@@ -34,12 +44,10 @@ function AddPlacePopup ({ isOpen, onClose, onAddPlace }) {
                 maxLength="30"
                 required
                 autoComplete="off"
-                ref={placeNameRef}
+                value={name || ""}
+                onChange={handleNameChange}
             />
-            <span
-                id="card-name-error"
-                className="popup__input-error"
-            ></span>
+            <span id="card-name-error" className="popup__input-error"></span>
             <input
                 id="image-link"
                 className="popup__input-field popup__input-image-link"
@@ -48,14 +56,12 @@ function AddPlacePopup ({ isOpen, onClose, onAddPlace }) {
                 placeholder="Ссылка на картинку"
                 required
                 autoComplete="off"
-                ref={placeLinkRef}
+                value={link || ""}
+                onChange={handleLinkChange}
             />
-            <span
-                id="image-link-error"
-                className="popup__input-error"
-            ></span>
+            <span id="image-link-error" className="popup__input-error"></span>
         </PopupWithForm>
-    )
+    );
 }
 
 export default AddPlacePopup;
