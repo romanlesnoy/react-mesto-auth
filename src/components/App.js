@@ -84,7 +84,7 @@ function App() {
                 .then((res) => {
                     if (res) {
                         setLoggedIn(true);
-                        setUserEmail(res.email);
+                        setUserEmail(res.data.email);
                         history.push("/");
                     }
                 })
@@ -265,18 +265,6 @@ function App() {
                     title="Вы уверены?"
                     submitButtonText="Да"
                 >
-                    <input
-                        id="avatar-link"
-                        className="popup__input-field popup__input-avatar-link"
-                        type="url"
-                        name="avatarlink"
-                        placeholder="Ссылка на картинку"
-                        required
-                    />
-                    <span
-                        id="avatar-link-error"
-                        className="popup__input-error"
-                    ></span>
                 </PopupWithForm>
 
                 <ImagePopup card={selectedCard} onClose={closeAllPopups} />

@@ -4,9 +4,7 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike, onCardDelete, cards }) {
     const currentUser = useContext(CurrentUserContext);
-
     return (
-        <CurrentUserContext.Provider value={currentUser}>
             <main className='main'>
                 <section className="profile">
                     <div className="profile__container">
@@ -57,7 +55,6 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
                     ))}
                 </section>
             </main>
-        </CurrentUserContext.Provider>
     );
 }
 
