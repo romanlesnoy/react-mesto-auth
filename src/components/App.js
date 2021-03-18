@@ -14,7 +14,7 @@ import Register from "./Register";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
 import InfoToolTip from "./InfoToolTip";
-import { register, authorize, getContent } from "../utils/Auth";
+import { register, authorize, getContent } from "../utils/auth";
 
 function App() {
     //стейты состояния
