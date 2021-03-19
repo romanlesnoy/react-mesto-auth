@@ -28,6 +28,13 @@
 
 ### Запуск приложения
 
+❗️Важно❗️ По ссылке демо проекта, поэтому, пожалуйста, не указываете свои реальные данные при регистрации.
+Для логина в приложении воспользуйтесь следующими данными
+    ```
+    email: email@yandex.ru
+    password: somepassword
+    ```
+
 - Склонировать репозиторий
     ```bash
     $ git clone https://github.com/romanlesnoy/react-mesto-auth.git
@@ -41,11 +48,5 @@
     npm run start
     ```
 
-Или можно посмотреть по [ссылке](https://romanlesnoy.github.io/react-mesto-auth/)
-❗️ Важно❗️ По ссылке демо проекта, поэтому, пожалуйста, не указываете свои реальные данные при регистрации.
-Для логина в приложении воспользуйтесь следующими данными
-    ```
-    email: email@yandex.ru
-    password": somepassword
-    ```
+Или можно посмотреть по ссылке [вариант с авторизацией](https://romanlesnoy.github.io/react-mesto-auth/), и [и без](https://romanlesnoy.github.io/mesto/)
 
