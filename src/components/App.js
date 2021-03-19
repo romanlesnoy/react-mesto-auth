@@ -18,22 +18,22 @@ import { register, authorize, getContent } from "../utils/auth";
 
 function App() {
     //стейты состояния
-    const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);// попап редактировния аватара профиля
-    const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);// попап редактирования информации пользователя
-    const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);//попап добавления карточки
-    const [isInfoToolTipPopupOpen, setIsInfoToolTipPopupOpen] = useState(false);//попапа с информацией о регистрации пользователя
-    const [selectedCard, setSelectedCard] = useState(false);//попап карточки
+    const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+    const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+    const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+    const [isInfoToolTipPopupOpen, setIsInfoToolTipPopupOpen] = useState(false);
+    const [selectedCard, setSelectedCard] = useState(false);
 
-    const [loggedIn, setLoggedIn] = useState(false);// авторизация
-    const [regSuccsesStatusInfo, setRegSuccsesStatusInfo] = useState(false);//статус информации о регистрации, которая отобразится в попапе 
-    const [userEmail, setUserEmail] = useState(" ");//имейл пользователя в хедере
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [regSuccsesStatusInfo, setRegSuccsesStatusInfo] = useState(false);
+    const [userEmail, setUserEmail] = useState(" ");
 
-    const [currentUser, setCurrentUser] = useState({});//стейт пользователя
-    const [cards, setCards] = useState([]);//массив карточек 
+    const [currentUser, setCurrentUser] = useState({});
+    const [cards, setCards] = useState([]);
 
     const history = useHistory();
 
-    const handleRegister = (email, password) => { // регистрация пользователя
+    const handleRegister = (email, password) => { 
         register(email, password)
             .then((res) => {
                 if (res) {
@@ -51,7 +51,7 @@ function App() {
             });
     };
 
-    const handleLogin = (email, password) => {//вход пользователя
+    const handleLogin = (email, password) => {
         authorize(email, password)
             .then((res) => {
                 console.log(res);
@@ -71,13 +71,13 @@ function App() {
             });
     };
 
-    const handleLogOut = () => { // выход
+    const handleLogOut = () => { 
         localStorage.removeItem("jwt");
         setLoggedIn(false);
         history.push("/sign-in");
     };
 
-    const tokenCheck = () => {// проверка токена
+    const tokenCheck = () => {
         const jwt = localStorage.getItem("jwt");
         if (jwt) {
             getContent(jwt)

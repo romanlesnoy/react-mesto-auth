@@ -29,7 +29,7 @@
 
 ### Запуск приложения
 
-- Склонировать репозиторий
+- Клонировать репозиторий
     ```bash
     $ git clone https://github.com/romanlesnoy/react-mesto-auth.git
     ```
