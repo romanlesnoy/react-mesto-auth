@@ -40,6 +40,7 @@ const Login = ({ onLogin }) => {
                     placeholder="Пароль"
                     required
                     value={password}
+                    minLength="8"
                     onChange={handlePasswordInput}
                 />
                 <button

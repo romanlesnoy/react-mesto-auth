@@ -17,7 +17,6 @@ import InfoToolTip from "./InfoToolTip";
 import { register, authorize, getContent } from "../utils/auth";
 
 function App() {
-    //стейты состояния
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -33,10 +32,11 @@ function App() {
 
     const history = useHistory();
 
-    const handleRegister = (email, password) => { 
+    const handleRegister = (email, password) => {
         register(email, password)
             .then((res) => {
                 if (res) {
+                    console.log(res);
                     setLoggedIn(true);
                     setRegSuccsesStatusInfo(true);
                     setIsInfoToolTipPopupOpen(true);
@@ -68,10 +68,11 @@ function App() {
                 if (err === 400) return console.log("Не передано одно из поле");
                 if (err === 401)
                     return console.log("Пользователь с email не найден");
+                console.log(err);
             });
     };
 
-    const handleLogOut = () => { 
+    const handleLogOut = () => {
         localStorage.removeItem("jwt");
         setLoggedIn(false);
         history.push("/sign-in");
@@ -84,13 +85,15 @@ function App() {
                 .then((res) => {
                     if (res) {
                         setLoggedIn(true);
-                        setUserEmail(res.data.email);
+                        setUserEmail(res.email);
                         history.push("/");
                     }
                 })
                 .catch((err) => {
                     if (err === 400)
-                        return console.log("Токен не передан или передан не в том формате");
+                        return console.log(
+                            "Токен не передан или передан не в том формате"
+                        );
                     if (err === 401)
                         return console.log("Переданный токен некорректен ");
                     console.log(err);
@@ -103,29 +106,25 @@ function App() {
     }, []);
 
     useEffect(() => {
-        api.getCards()
-            .then((cardsData) => {
-                setCards(cardsData);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+        const token = localStorage.getItem("jwt");
+        api.setHeadersToken(token);
 
-    useEffect(() => {
-        api.getUserInformation()
-            .then((userData) => {
+        Promise.all([api.getCards(), api.getUserInformation()])
+            .then(([cardsData, userData]) => {
+                setCards(cardsData);
                 setCurrentUser(userData);
             })
             .catch((err) => {
                 console.log(err);
             });
-    }, []);
+    }, [loggedIn]);
 
     function handleCardLike(card) {
-        const isLiked = card.likes.some((i) => i._id === currentUser._id);
+        console.log(card.likes);
+        const isLiked = card.likes.some((i) => i === currentUser._id);
         api.changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
+                console.log(newCard);
                 const newCards = cards.map((c) =>
                     c._id === card._id ? newCard : c
                 );
@@ -264,8 +263,7 @@ function App() {
                     name="popup__remove-card"
                     title="Вы уверены?"
                     submitButtonText="Да"
-                >
-                </PopupWithForm>
+                ></PopupWithForm>
 
                 <ImagePopup card={selectedCard} onClose={closeAllPopups} />
                 <InfoToolTip

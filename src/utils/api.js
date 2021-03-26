@@ -1,7 +1,14 @@
 export class Api {
-    constructor({ token, url }) {
-        this._token = token;
-        this._url = url;
+    constructor(config) {
+        this._headers = config.headers;
+        this._url = config.url;
+    }
+
+    setHeadersToken (token) {
+        this._headers = {
+            ...this._headers,
+            authorization: `Bearer ${token}`,
+        }
     }
 
     _response(res) {
@@ -13,27 +20,20 @@ export class Api {
 
     getUserInformation() {
         return fetch(`${this._url}/users/me`, {
-            headers: {
-                authorization: this._token,
-            },
+            headers: this._headers,
         }).then(this._response);
     }
 
     getCards() {
         return fetch(`${this._url}/cards`, {
-            headers: {
-                authorization: this._token,
-            },
+            headers: this._headers,
         }).then(this._response);
     }
 
-    editUserInfo({name, about}) {
+    editUserInfo({ name, about }) {
         return fetch(`${this._url}/users/me`, {
             method: "PATCH",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
             body: JSON.stringify({
                 name,
                 about,
@@ -42,12 +42,10 @@ export class Api {
     }
 
     addNewCard({ name, link }) {
+        console.log(name, link)
         return fetch(`${this._url}/cards`, {
             method: "POST",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
             body: JSON.stringify({
                 name,
                 link,
@@ -58,26 +56,20 @@ export class Api {
     removeCard(cardId) {
         return fetch(`${this._url}/cards/${cardId}`, {
             method: "DELETE",
-            headers: {
-                authorization: this._token,
-            },
+            headers: this._headers,
         }).then(this._response);
     }
 
     changeLikeCardStatus(cardId, isLiked) {
-        if(isLiked) {
-            return fetch(`${this._url}/cards/likes/${cardId}`, {
+        if (isLiked) {
+            return fetch(`${this._url}/cards/${cardId}/likes`, {
                 method: "PUT",
-                headers: {
-                    authorization: this._token,
-                },
+                headers: this._headers,
             }).then(this._response);
         } else {
-            return fetch(`${this._url}/cards/likes/${cardId}`, {
+            return fetch(`${this._url}/cards/${cardId}/likes`, {
                 method: "DELETE",
-                headers: {
-                    authorization: this._token,
-                },
+                headers: this._headers,
             }).then(this._response);
         }
     }
@@ -85,10 +77,7 @@ export class Api {
     editUserAvatar(avatar) {
         return fetch(`${this._url}/users/me/avatar `, {
             method: "PATCH",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
             body: JSON.stringify({
                 avatar,
             }),
@@ -96,9 +85,17 @@ export class Api {
     }
 }
 
+// const api = new Api({
+//     // token: "f15df90b-c5d7-4a51-ba9b-c09d4fecf6eb",
+//     // url: "https://mesto.nomoreparties.co/v1/cohort-18",
+//     url: "http://localhost:3000",
+// });
+
 const api = new Api({
-    token: "f15df90b-c5d7-4a51-ba9b-c09d4fecf6eb",
-    url: "https://mesto.nomoreparties.co/v1/cohort-18",
+    url: "http://localhost:3000",
+    headers: {
+        "Content-Type": "application/json",
+    },
 });
 
 export default api;
