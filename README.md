@@ -49,4 +49,3 @@
     password: somepassword
 
 Или можно посмотреть по ссылке [вариант с авторизацией](https://romanlesnoy.github.io/react-mesto-auth/), и [без](https://romanlesnoy.github.io/mesto/).
-
