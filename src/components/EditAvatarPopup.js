@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import PopupWithForm from "./PopupWithForm";
-import validationForm from "../utils/formValidator";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     const avatarRef = useRef();
@@ -13,17 +12,12 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
         avatarRef.current.value = "";
     }
 
-
-        const validation = () => {
-            validationForm()
-        }
-
     return (
         <PopupWithForm
             name="avatar-update"
             title="Обновить аватар"
             submitButtonText="Сохранить"
-            isOpen={isOpen && validation}
+            isOpen={isOpen}
             onClose={onClose}
             onSubmit={handleSubmit}
             noValidate

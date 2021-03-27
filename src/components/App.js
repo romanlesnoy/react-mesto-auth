@@ -32,6 +32,24 @@ function App() {
 
     const history = useHistory();
 
+    useEffect(() => {
+        const token = localStorage.getItem("jwt");
+        if(!token) {
+            return
+        } else {
+            api.setHeadersToken(token);
+
+            Promise.all([api.getCards(), api.getUserInformation()])
+                .then(([cardsData, userData]) => {
+                    setCards(cardsData);
+                    setCurrentUser(userData);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+    }, [loggedIn]);
+
     const handleRegister = (email, password) => {
         register(email, password)
             .then((res) => {
@@ -46,15 +64,19 @@ function App() {
             .catch((err) => {
                 setRegSuccsesStatusInfo(false);
                 setIsInfoToolTipPopupOpen(true);
-                if (err === 400)
-                    return console.log("некорректно заполнено одно из полей");
+                if (err === "Error 400") {
+                    return console.log("Не верно заполнено одно из поле");
+                }
+                if (err === "Error 409") {
+                    return console.log("Такой пользователь уже существует");
+                }
+                console.log(err)
             });
     };
 
     const handleLogin = (email, password) => {
         authorize(email, password)
             .then((res) => {
-                console.log(res);
                 if (res.token) {
                     localStorage.setItem("jwt", res.token);
                     setLoggedIn(true);
@@ -65,9 +87,12 @@ function App() {
             .catch((err) => {
                 setRegSuccsesStatusInfo(false);
                 setIsInfoToolTipPopupOpen(true);
-                if (err === 400) return console.log("Не передано одно из поле");
-                if (err === 401)
-                    return console.log("Пользователь с email не найден");
+                if (err === "Error 400") {
+                    return console.log("Не верно заполнено одно из поле");
+                }
+                if (err === "Error 401") {
+                    return console.log("Неправильные почта или пароль");
+                }
                 console.log(err);
             });
     };
@@ -90,41 +115,19 @@ function App() {
                     }
                 })
                 .catch((err) => {
-                    if (err === 400)
-                        return console.log(
-                            "Токен не передан или передан не в том формате"
-                        );
-                    if (err === 401)
-                        return console.log("Переданный токен некорректен ");
-                    console.log(err);
+                    console.log(err)
                 });
         }
     };
 
     useEffect(() => {
         tokenCheck();
-    }, []);
-
-    useEffect(() => {
-        const token = localStorage.getItem("jwt");
-        api.setHeadersToken(token);
-
-        Promise.all([api.getCards(), api.getUserInformation()])
-            .then(([cardsData, userData]) => {
-                setCards(cardsData);
-                setCurrentUser(userData);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
     }, [loggedIn]);
 
     function handleCardLike(card) {
-        console.log(card.likes);
         const isLiked = card.likes.some((i) => i === currentUser._id);
         api.changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
-                console.log(newCard);
                 const newCards = cards.map((c) =>
                     c._id === card._id ? newCard : c
                 );
