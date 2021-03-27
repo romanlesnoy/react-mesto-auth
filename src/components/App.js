@@ -54,7 +54,6 @@ function App() {
         register(email, password)
             .then((res) => {
                 if (res) {
-                    console.log(res);
                     setLoggedIn(true);
                     setRegSuccsesStatusInfo(true);
                     setIsInfoToolTipPopupOpen(true);
