@@ -84,14 +84,8 @@ export class Api {
     }
 }
 
-// const api = new Api({
-//     // token: "f15df90b-c5d7-4a51-ba9b-c09d4fecf6eb",
-//     // url: "https://mesto.nomoreparties.co/v1/cohort-18",
-//     url: "http://localhost:3000",
-// });
-
 const api = new Api({
-    url: "http://localhost:3000",
+    url: "https://api.lesnoy-mesto.students.nomoredomains.icu",
     headers: {
         "Content-Type": "application/json",
     },

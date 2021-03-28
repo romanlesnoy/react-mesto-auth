@@ -1,5 +1,4 @@
-// export const BASE_URL = "https://auth.nomoreparties.co";
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://api.lesnoy-mesto.students.nomoredomains.icu";
 
 const response = (res) => {
     if (res.ok) {
