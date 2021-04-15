@@ -1,5 +1,7 @@
 # Фронтенд проекта Mesto
 
+[Ссылка на проект](https://lesnoy-mesto.students.nomoredomains.icu/sign-in) 
+
 ### Описание
 
 Проект предтавляет собой одностраничный сайт с профилем пользователя и галерей изображений.
@@ -48,4 +50,4 @@
     email: email@yandex.ru
     password: somepassword
 
-Или можно посмотреть по ссылке [вариант с авторизацией](https://romanlesnoy.github.io/react-mesto-auth/), и [без](https://romanlesnoy.github.io/mesto/).
+ [Вариант без регистрации](https://romanlesnoy.github.io/mesto/).
