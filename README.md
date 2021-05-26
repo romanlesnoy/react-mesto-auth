@@ -1,6 +1,7 @@
 # Фронтенд проекта Mesto
 
 [Ссылка на проект](https://lesnoy-mesto.students.nomoredomains.icu/sign-in) 
+![Project Mesto](https://user-images.githubusercontent.com/69040854/119694812-40e2c380-be56-11eb-97bf-bffeb66cb0b2.png)
 
 ### Описание
 
