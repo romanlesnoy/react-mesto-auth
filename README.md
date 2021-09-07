@@ -1,7 +1,9 @@
 # Фронтенд проекта Mesto
 
-[Ссылка на проект](https://lesnoy-mesto.students.nomoredomains.icu/sign-in) 
+[Ссылка на проект](https://lesnoy-mesto.students.nomoredomains.icu/sign-in)
+
 Данные для авторизации:
+
     - emaill: test@test.ru;
     - password: 12345678;
 
