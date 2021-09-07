@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 
 const Login = ({ onLogin }) => {
-    const [email, setEmail] = useState(" ");
-    const [password, setPassword] = useState(" ");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleEmailInput = (event) => {
         setEmail(event.target.value);
